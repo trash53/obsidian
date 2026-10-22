@@ -1,0 +1,20 @@
+{
+  "propertyKey": "item",
+  "enableForLinking": true,
+  "enableForQuickSwitcher": true,
+  "includeFilenameInSearch": true,
+  "includeAliasesInSearch": true,
+  "enableForDragDrop": true,
+  "useSimpleSearch": false,
+  "enableForGraphView": true,
+  "enableForTabs": true,
+  "enableForExplorer": false,
+  "folderNoteFilename": "",
+  "enableForWindowFrame": true,
+  "enableForBookmarks": true,
+  "enableForProperties": true,
+  "enableMdxSupport": false,
+  "quickSwitcherExcludedBehavior": "deemphasize",
+  "linkSuggesterExcludedBehavior": "deemphasize",
+  "hideUnresolvedLinks": false
+}

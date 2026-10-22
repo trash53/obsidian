@@ -1,0 +1,301 @@
+{
+  "main": {
+    "id": "3f1872a58eece53f",
+    "type": "split",
+    "children": [
+      {
+        "id": "354451c06473422a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7f05852b629b8add",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "graph",
+              "state": {},
+              "pinned": true,
+              "icon": "lucide-git-fork",
+              "title": "グラフビュー"
+            }
+          },
+          {
+            "id": "789d65a05f182cd0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "file:C:/Users/ryouske/Documents/020_claude/放置系レースゲーム/放置型モータースポーツ一族育成ゲーム（仮） 基本設計書 v2.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "放置型モータースポーツ一族育成ゲーム（仮） 基本設計書 v2"
+            }
+          },
+          {
+            "id": "337051d84681a387",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "file:C:/Users/ryouske/Documents/020_claude/claude_project_manual_notes.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "claude_project_manual_notes"
+            }
+          },
+          {
+            "id": "21e567c0b5a07388",
+            "type": "leaf",
+            "state": {
+              "type": "planner-release-notes",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Day Planner Release 0.35.1"
+            }
+          },
+          {
+            "id": "5f476fefac498e32",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "タスク.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "タスク"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b26832b7e28c5adb",
+    "type": "split",
+    "children": [
+      {
+        "id": "cefa4cc22bf33051",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e5f0a4f42229dd56",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "ファイルエクスプローラ"
+            }
+          },
+          {
+            "id": "baf65743188b88cb",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "検索"
+            }
+          },
+          {
+            "id": "875bffbbd929f1af",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "ブックマーク"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "1c2031f2d72b20c8",
+    "type": "split",
+    "children": [
+      {
+        "id": "bd92b1eb9cdd8a02",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b97213490358a42b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "バックリンク"
+            }
+          },
+          {
+            "id": "facc7a10cbd1d43a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "アウトゴーイングリンク"
+            }
+          },
+          {
+            "id": "c29c380320b6f77c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+            }
+          },
+          {
+            "id": "e43f13a1f8de2fdb",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "すべてのプロパティ"
+            }
+          },
+          {
+            "id": "0cf71d90b8a7f492",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "アウトライン"
+            }
+          },
+          {
+            "id": "fdfdab3b2d2d3c9c",
+            "type": "leaf",
+            "state": {
+              "type": "planner-timeline",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Timeline"
+            }
+          },
+          {
+            "id": "3ba5512bd54185ae",
+            "type": "leaf",
+            "state": {
+              "type": "planner-time-tracker",
+              "state": {},
+              "icon": "timer",
+              "title": "Time Tracker"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "templates:テンプレートを挿入": false,
+      "command-palette:コマンドパレットを開く": false,
+      "bases:新規ベースを作成": false,
+      "obsidian-day-planner:Open Timeline": false,
+      "obsidian-day-planner:Open Multi-Day View": false
+    }
+  },
+  "active": "fdfdab3b2d2d3c9c",
+  "lastOpenFiles": [
+    "obsidianコンシェルジュ仕様書.md",
+    "未確認 169962.crdownload",
+    "2026-10-22.md",
+    "タスク.md",
+    "file:C:/Users/ryouske/Documents/020_claude/claude_project_manual_notes.md",
+    "無題のフォルダ",
+    "衝動.md",
+    "疾走感.md",
+    "既存ハブ名取得.md",
+    "AI用出力クエリ.md",
+    "202610181747クエリB.md",
+    "202610181747クエリA.md",
+    "file:C:/Users/ryouske/Documents/020_claude/放置系レースゲーム/放置型モータースポーツ一族育成ゲーム（仮） 基本設計書 v2.md",
+    "file:C:/Users/ryouske/Documents/020_claude/放置系レースゲーム/引き継ぎ_セーブデータ設計へ.md",
+    "items/カメレオン_20261018-153208-mt69.md",
+    "items/遊泳-wouca_20261018-154024-yq0o.md",
+    "Tags",
+    "items/We-Are-So-in-love_20261018-084354-squn.md",
+    "items/ルミエールドゥイッセイ_20261018-164929-n122.md",
+    "無題のファイル.base",
+    "items/oddre-revival_20261017-200410-kmzp.md",
+    "無題のファイル.canvas",
+    "items/ジョーマローンオレンジマーマレード_20261018-164414-hcdk.md",
+    "items/maison-matine-あらしのうみ_20261018-164759-p3hn.md",
+    "items/ニコライ-サントノレ_20261018-164607-urcq.md",
+    "items/スターチップフラペチーノ_20261018-154207-dpsg.md",
+    "items/formula-1-theme_20261018-153509-su7x.md",
+    "items/いちご-got-it_20261018-153333-aihc.md",
+    "items/Pure_20261018-152956-tuex.md",
+    "items/一途_20261018-152829-5eh1.md",
+    "items/DIM-LIGHT_20261018-152728-v8ed.md",
+    "items/audio",
+    "items/新しいフォルダー",
+    "items/vtuber/未確認 388589.crdownload",
+    "items/vtuber/未確認 144671.crdownload",
+    "items/vtuber/未確認 841123.crdownload",
+    "items/vtuber"
+  ]
+}
