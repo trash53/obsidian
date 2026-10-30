@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<style>
+/* FONTS: Inter / Noto Sans JP のサブセット woff2 を base64 で @font-face として、ここに追記する（仕様9章）。未埋め込みの間は端末の代替フォント。 */
+:root{--h:#fff;--m:#fff;--s:#fff;--a:#eee}
+html,body{margin:0;height:100%;background:#000;color:var(--a);font-family:Inter,"Noto Sans JP",-apple-system,"Hiragino Sans",sans-serif;overflow:hidden}
+#shift{display:flex;width:100%;height:100%;transition:transform 1s ease-in-out}
+#clock{position:relative;flex:none}
+#clock canvas{position:absolute;left:0;top:0}
+#chips{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:14px}
+.chip{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:16px;font-weight:300;letter-spacing:.04em}
+.chip i{width:26px;height:26px;border-radius:50%;display:block}
+#right{flex:1;min-width:0;display:flex;flex-direction:column;padding:12px 24px 12px 0;box-sizing:border-box}
+.card{min-height:0;display:flex;flex-direction:column;justify-content:center;position:relative}
+.lb{font-size:16px;font-weight:300;opacity:.85}
+.val{font-size:60px;font-weight:100;line-height:1.05;white-space:nowrap}
+.val small{font-size:22px;font-weight:200;margin-left:4px}
+.bar{height:6px;border-radius:3px;background:rgba(255,255,255,.12);margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:3px;transition:width 1s}
+#tB{background:linear-gradient(90deg,var(--h),var(--m))}
+#hB{background:linear-gradient(90deg,var(--m),var(--s))}
+.nt{position:absolute;right:0;top:4px;font-size:14px;font-weight:300;opacity:.8}
+#cRoom .val{color:var(--h)} #cHum .val{color:var(--m)}
+.stale .val,.stale .bar{opacity:.35}
+#cWx{flex-direction:row;gap:12px;align-items:center}
+.wx{flex:1;text-align:center;color:var(--s)}
+.wx b{display:block;font-size:16px;font-weight:300;color:var(--a)}
+.wx svg{width:48px;height:48px;margin:4px 0 0}
+.wx em{display:block;font-style:normal;font-size:20px;font-weight:300}
+.wx span{display:block;font-size:18px;font-weight:200;color:var(--a)}
+#cWx.stale .wx{opacity:.4}
+#cGr svg{width:100%;height:100%;display:block}
+#cGr.stale svg{opacity:.4}
+#dbg{position:fixed;left:4px;bottom:2px;font:12px monospace;color:#888;display:none}
+#pal{display:none;height:100%;overflow:auto;padding:12px;box-sizing:border-box;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:4px 12px;align-content:start}
+#pal div{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:300}
+#pal i{width:22px;height:22px;border-radius:50%;display:inline-block}
+</style>
+</head>
+<body>
+<div id="shift">
+  <div id="clock"><canvas id="cv1"></canvas><canvas id="cv2"></canvas><div id="chips"></div></div>
+  <div id="right">
+    <div class="card" id="cRoom" style="flex:110"><div class="lb">室温</div><div class="val"><span id="tV">--</span><small>°C</small></div><div class="bar"><i id="tB"></i></div><div class="nt" id="tN"></div></div>
+    <div class="card" id="cHum" style="flex:110"><div class="lb">湿度</div><div class="val"><span id="hV">--</span><small>%</small></div><div class="bar"><i id="hB"></i></div><div class="nt" id="hN"></div></div>
+    <div class="card" id="cWx" style="flex:170"><div class="wx" id="wT"></div><div class="wx" id="wM"></div></div>
+    <div class="card" id="cGr" style="flex:130"><svg id="gr" viewBox="0 0 376 110" preserveAspectRatio="none"></svg></div>
+  </div>
+</div>
+<div id="pal"></div>
+<div id="dbg"></div>
+<script>
+'use strict';
+const P = <?!= params ?>;
+const CFG = {
+  CLOCK_MAX: 600,            // 時計の直径（右パネルが窮屈なら540程度に）
+  TEMP: [10, 35], HUM: [20, 80],
+  LAT: 34.03, LON: 131.18,
+  SENSOR_MS: 60e3, WX_MS: 3 * 3600e3,
+  STALE_SENSOR: 15 * 60e3, STALE_WX: 6 * 3600e3,
+  RETRY: [15e3, 30e3, 60e3, 120e3, 300e3],
+  FRAME_MS: 30, FADE_MS: 3000, SHIFT_MS: 180e3
+};
+const TAU = Math.PI * 2;
+const $ = id => document.getElementById(id);
+const pad = n => (n < 10 ? '0' : '') + n;
+const jst = () => new Date(Date.now() + 9 * 36e5);            // UTC+9 固定オフセット（Intl不使用）
+const ymd = d => d.getUTCFullYear() + '-' + pad(d.getUTCMonth() + 1) + '-' + pad(d.getUTCDate());
+const todayStr = () => P.date || ymd(jst());
+
+/* ---------- 乱数・OKLCH ---------- */
+function xmur3(s) { let h = 1779033703 ^ s.length; for (let i = 0; i < s.length; i++) { h = Math.imul(h ^ s.charCodeAt(i), 3432918353); h = h << 13 | h >>> 19; }
+  return function () { h = Math.imul(h ^ h >>> 16, 2246822507); h = Math.imul(h ^ h >>> 13, 3266489909); return (h ^= h >>> 16) >>> 0; }; }
+function mulberry32(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a);
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function lin(L, C, H) {
+  const a = C * Math.cos(H * Math.PI / 180), b = C * Math.sin(H * Math.PI / 180);
+  const l = Math.pow(L + .3963377774 * a + .2158037573 * b, 3), m = Math.pow(L - .1055613458 * a - .0638541728 * b, 3), s = Math.pow(L - .0894841775 * a - 1.291485548 * b, 3);
+  return [4.0767416621 * l - 3.3077115913 * m + .2309699292 * s, -1.2684380046 * l + 2.6097574011 * m - .3413193965 * s, -.0041960863 * l - .7034186147 * m + 1.707614701 * s];
+}
+const inGamut = v => v[0] >= -1e-4 && v[0] <= 1.0001 && v[1] >= -1e-4 && v[1] <= 1.0001 && v[2] >= -1e-4 && v[2] <= 1.0001;
+function fitC(L, C, H) { if (inGamut(lin(L, C, H))) return C; let lo = 0, hi = C; for (let i = 0; i < 14; i++) { const mid = (lo + hi) / 2; if (inGamut(lin(L, mid, H))) lo = mid; else hi = mid; } return lo; }
+const contrast = (L, C, H) => { const v = lin(L, C, H); return (.2126 * v[0] + .7152 * v[1] + .0722 * v[2] + .05) / .05; };
+function mk(L, C, H) { let c = fitC(L, C, H); while (contrast(L, c, H) < 9 && L < .97) { L += .01; c = fitC(L, C, H); } return [L, c, H]; } // 最終コントラストチェック
+function hex(c) { const v = lin(c[0], fitC(c[0], c[1], c[2]), c[2]); let s = '#';
+  for (let i = 0; i < 3; i++) { let x = Math.max(0, Math.min(1, v[i])); x = x <= .0031308 ? 12.92 * x : 1.055 * Math.pow(x, 1 / 2.4) - .055; s += pad0(Math.round(x * 255)); } return s; }
+const pad0 = n => (n < 16 ? '0' : '') + n.toString(16);
+
+/* ---------- 日替わりパレット ---------- */
+const SCHEMES = [[0, 40, 80], [0, 120, 240], [0, 150, 210]], SCHEME_NAMES = ['類似色', 'トライアド', '分裂補色'];
+const rawHue = ds => mulberry32(xmur3(ds)())() * 360;
+function genTheme(ds) {
+  const prev = ymd(new Date(Date.parse(ds + 'T00:00:00Z') - 864e5));
+  let h0 = rawHue(ds), d = Math.abs(h0 - rawHue(prev)); d = Math.min(d, 360 - d);
+  if (d < 40) h0 = (h0 + 60) % 360;                                  // 前日との差が40°未満なら+60°
+  const r = mulberry32(xmur3(ds)()); r();                            // 乱数の消費順: 基準色相 → スキーム → 明度・彩度
+  const sc = Math.floor(r() * 3), cols = [];
+  for (let i = 0; i < 3; i++) { const L = .76 + r() * .10, C = .11 + r() * .06; cols.push(mk(L, C, (h0 + SCHEMES[sc][i]) % 360)); }
+  return { sc: sc, h: cols[0], m: cols[1], s: cols[2], a: mk(.92, .04, h0) };
+}
+function lerpC(a, b, t) { const dh = ((b[2] - a[2] + 540) % 360) - 180; return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, (a[2] + dh * t + 360) % 360]; }
+
+/* ---------- パレット一覧（?view=palette[&date=YYYY-MM-DD]） ---------- */
+if (P.view === 'palette') {
+  document.getElementById('shift').style.display = 'none';
+  const el = $('pal'); el.style.display = 'grid';
+  const y = (P.date || ymd(jst())).slice(0, 4); let html = '';
+  for (let i = 0; i < 365; i++) {
+    const ds = ymd(new Date(Date.parse(y + '-01-01T00:00:00Z') + i * 864e5)), t = genTheme(ds);
+    html += '<div><span>' + ds.slice(5) + '</span><i style="background:' + hex(t.h) + '"></i><i style="background:' + hex(t.m) + '"></i><i style="background:' + hex(t.s) + '"></i><span>' + SCHEME_NAMES[t.sc] + '</span></div>';
+  }
+  el.innerHTML = html;
+  throw new Error('palette view'); // 以降の初期化を止める
+}
+
+/* ---------- テーマ適用・遷移 ---------- */
+let cur = genTheme(todayStr()), tr = null, curDs = todayStr(), loadDs = curDs;
+const RC = { h: '', m: '', s: '' };
+function apply(t) {
+  RC.h = hex(t.h); RC.m = hex(t.m); RC.s = hex(t.s);
+  const st = document.documentElement.style;
+  st.setProperty('--h', RC.h); st.setProperty('--m', RC.m); st.setProperty('--s', RC.s); st.setProperty('--a', hex(t.a));
+}
+function renderChips() {
+  $('chips').innerHTML = [['h', '時'], ['m', '分'], ['s', '秒']].map(k =>
+    '<div class="chip"><i style="background:' + RC[k[0]] + '"></i>' + RC[k[0]].toUpperCase() + '</div>').join('');
+}
+function startTransition(to) { tr = { from: cur, to: to, t0: performance.now() }; }
+function stepTransition(now) {
+  const t = Math.min(1, (now - tr.t0) / CFG.FADE_MS);
+  if (t >= 1) { cur = tr.to; tr = null; apply(cur); renderChips(); return; }
+  const f = tr.from, g = tr.to;
+  apply({ h: lerpC(f.h, g.h, t), m: lerpC(f.m, g.m, t), s: lerpC(f.s, g.s, t), a: lerpC(f.a, g.a, t) });
+}
+function checkDate() { const ds = todayStr(); if (ds !== curDs) { curDs = ds; startTransition(genTheme(ds)); return true; } return false; }
+
+/* ---------- 時計 ---------- */
+const cv1 = $('cv1'), cv2 = $('cv2'), c1 = cv1.getContext('2d'), c2 = cv2.getContext('2d');
+let S = 600, DPR = 1, lastSec = -1;
+function layout() {
+  S = Math.floor(Math.max(200, Math.min(CFG.CLOCK_MAX, window.innerHeight, window.innerWidth - 340)));
+  DPR = Math.min(2, window.devicePixelRatio || 1);
+  $('clock').style.width = S + 'px'; $('clock').style.height = S + 'px';
+  [cv1, cv2].forEach(c => { c.width = S * DPR; c.height = S * DPR; c.style.width = S + 'px'; c.style.height = S + 'px'; });
+  c1.setTransform(DPR, 0, 0, DPR, 0, 0); c2.setTransform(DPR, 0, 0, DPR, 0, 0);
+  lastSec = -1;
+}
+function arc(ctx, r, a0, a1, w, alpha, col) { ctx.globalAlpha = alpha; ctx.strokeStyle = col; ctx.lineWidth = w; ctx.beginPath(); ctx.arc(S / 2, S / 2, r, a0, a1); ctx.stroke(); }
+function ring(ctx, r, w, p, col) {                               // 疑似Glow: 太さ・透明度を変えた3本の重ね描き
+  ctx.lineCap = 'round'; arc(ctx, r, 0, TAU, w, .12, col);
+  if (p <= 0) return; const a0 = -Math.PI / 2, a1 = a0 + TAU * Math.min(p, .9999);
+  arc(ctx, r, a0, a1, w * 2.6, .06, col); arc(ctx, r, a0, a1, w * 1.7, .12, col); arc(ctx, r, a0, a1, w, 1, col);
+}
+function drawHM(h, m, s) {
+  c1.clearRect(0, 0, S, S);
+  ring(c1, S * .455, S * .05, ((h % 12) + m / 60) / 12, RC.h);
+  ring(c1, S * .365, S * .035, (m + s / 60) / 60, RC.m);
+  c1.globalAlpha = 1;
+}
+function drawS(s, ms) { c2.clearRect(0, 0, S, S); ring(c2, S * .285, S * .018, (s + ms / 1000) / 60, RC.s); c2.globalAlpha = 1; }
+
+/* ---------- 天気コード ---------- */
+function wxMap(c) {
+  if (c === 0) return ['快晴', 'sun']; if (c === 1) return ['晴れ', 'sun']; if (c === 2) return ['薄曇り', 'partly']; if (c === 3) return ['曇り', 'cloud'];
+  if (c === 45 || c === 48) return ['霧', 'fog'];
+  if ([51, 53, 55, 56, 57].indexOf(c) >= 0) return ['霧雨', 'drizzle'];
+  if ([61, 63, 66, 80, 81].indexOf(c) >= 0) return ['雨', 'rain'];
+  if ([65, 67, 82].indexOf(c) >= 0) return ['大雨', 'heavyrain'];
+  if ([71, 73, 75, 77, 85, 86].indexOf(c) >= 0) return ['雪', 'snow'];
+  if ([95, 96, 99].indexOf(c) >= 0) return ['雷雨', 'thunder'];
+  return ['--', 'unknown'];
+}
+const CLOUD = 'M14 34h20a8 8 0 0 0 0-16 11 11 0 0 0-21 3 7 7 0 0 0 1 13z';
+const RAYS = 'M24 6v6M24 36v6M6 24h6M36 24h6M11 11l4 4M33 33l4 4M11 37l4-4M33 15l4-4';
+const ICONS = {
+  sun: '<circle cx="24" cy="24" r="8"/><path d="' + RAYS + '"/>',
+  partly: '<circle cx="17" cy="17" r="6"/><path d="M17 4v3M5 17h3M8 8l2 2M26 8l-2 2"/><path d="M18 40h18a7 7 0 0 0 0-14 9 9 0 0 0-17 2 6 6 0 0 0-1 12z"/>',
+  cloud: '<path d="' + CLOUD + '"/>',
+  fog: '<path d="M10 18h28M6 26h36M12 34h24"/>',
+  drizzle: '<g transform="translate(0,-6)"><path d="' + CLOUD + '"/></g><path d="M16 36v3M24 36v3M32 36v3"/>',
+  rain: '<g transform="translate(0,-6)"><path d="' + CLOUD + '"/></g><path d="M16 34l-2 6M24 34l-2 6M32 34l-2 6"/>',
+  heavyrain: '<g transform="translate(0,-8)"><path d="' + CLOUD + '"/></g><path d="M14 31l-3 9M22 31l-3 9M30 31l-3 9M38 31l-3 9"/>',
+  snow: '<g transform="translate(0,-6)"><path d="' + CLOUD + '"/></g><path stroke-width="3.5" d="M16 36h.01M24 40h.01M32 36h.01"/>',
+  thunder: '<g transform="translate(0,-6)"><path d="' + CLOUD + '"/></g><path d="M26 30l-6 8h8l-6 8"/>',
+  unknown: '<path d="M18 19a6 6 0 1 1 8 6c-2 1-2 3-2 5M24 38h.01"/>'
+};
+const svgIcon = k => '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + ICONS[k] + '</svg>';
+
+/* ---------- データ表示 ---------- */
+let SENS = null, WX = null, WX_AT = 0;
+const hhmm = ts => { const d = new Date(ts + 9 * 36e5); return pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes()); };
+const pct = (v, r) => Math.max(0, Math.min(100, (v - r[0]) / (r[1] - r[0]) * 100));
+function renderSensor() {
+  const ok = SENS && typeof SENS.temp === 'number', stale = ok && (Date.now() - SENS.ts > CFG.STALE_SENSOR);
+  $('tV').textContent = ok ? SENS.temp.toFixed(1) : '--'; $('hV').textContent = ok ? Math.round(SENS.humidity) : '--';
+  $('tB').style.width = ok ? pct(SENS.temp, CFG.TEMP) + '%' : '0'; $('hB').style.width = ok ? pct(SENS.humidity, CFG.HUM) + '%' : '0';
+  $('cRoom').classList.toggle('stale', !!stale); $('cHum').classList.toggle('stale', !!stale);
+  const note = stale ? hhmm(SENS.ts) + '時点' : ''; $('tN').textContent = note; $('hN').textContent = note;
+}
+function dayHtml(label, i) {
+  if (!WX || i < 0) return '<b>' + label + '</b>' + svgIcon('unknown') + '<em>--</em><span>--/--°C</span>';
+  const w = wxMap(WX.daily.weather_code[i]), r = v => (typeof v === 'number' ? Math.round(v) : '--');
+  return '<b>' + label + '</b>' + svgIcon(w[1]) + '<em>' + w[0] + '</em><span>' + r(WX.daily.temperature_2m_max[i]) + '/' + r(WX.daily.temperature_2m_min[i]) + '°C</span>';
+}
+function renderWx() {                                              // 戻り値: 今日・明日の両方が見つかったか
+  let it = -1, im = -1;
+  if (WX && WX.daily) { const d = jst(), t = ymd(d), m = ymd(new Date(d.getTime() + 864e5)); it = WX.daily.time.indexOf(t); im = WX.daily.time.indexOf(m); }
+  $('wT').innerHTML = dayHtml('TODAY', it); $('wM').innerHTML = dayHtml('TOMORROW', im);
+  const stale = Date.now() - WX_AT > CFG.STALE_WX; $('cWx').classList.toggle('stale', !!WX && stale); $('cGr').classList.toggle('stale', !!WX && stale);
+  renderGraph(); return it >= 0 && im >= 0;
+}
+function renderGraph() {
+  const g = $('gr'); if (!WX || !WX.hourly) { g.innerHTML = ''; return; }
+  const t = ymd(jst()), i0 = WX.hourly.time.findIndex(x => x.indexOf(t) === 0); if (i0 < 0) { g.innerHTML = ''; return; }
+  const v = WX.hourly.temperature_2m.slice(i0, i0 + 24); if (v.length < 24) { g.innerHTML = ''; return; }
+  let lo = Math.min.apply(null, v), hi = Math.max.apply(null, v); if (hi - lo < 4) { const c = (hi + lo) / 2; lo = c - 2; hi = c + 2; }
+  const X = i => 8 + i / 24 * 360, Y = x => 80 - (x - lo) / (hi - lo) * 60;
+  let d = ''; for (let i = 0; i < 24; i++) d += (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(v[i]).toFixed(1);
+  const n = jst(), f = n.getUTCHours() + n.getUTCMinutes() / 60, k = Math.min(22, Math.floor(f)), cv = v[k] + (v[k + 1] - v[k]) * (f - k), mx = X(f), my = Y(cv);
+  let ax = ''; [0, 6, 12, 18, 24].forEach(h => { ax += '<text x="' + X(h) + '" y="104" text-anchor="middle" font-size="12" font-weight="300" fill="var(--a)">' + h + '</text>'; });
+  g.innerHTML = '<g fill="none" stroke="var(--s)" stroke-linecap="round" stroke-linejoin="round"><path d="' + d + '" stroke-width="6" opacity=".08"/><path d="' + d + '" stroke-width="3.5" opacity=".14"/><path d="' + d + '" stroke-width="1.5"/></g>'
+    + '<circle cx="' + mx.toFixed(1) + '" cy="' + my.toFixed(1) + '" r="8" fill="var(--s)" opacity=".25"/><circle cx="' + mx.toFixed(1) + '" cy="' + my.toFixed(1) + '" r="3.5" fill="var(--s)"/>'
+    + '<text x="8" y="14" font-size="12" font-weight="300" fill="var(--a)">' + Math.round(hi) + '°</text><text x="8" y="' + (Y(lo) - 6).toFixed(0) + '" font-size="12" font-weight="300" fill="var(--a)">' + Math.round(lo) + '°</text>' + ax;
+}
+
+/* ---------- 取得とリトライ（15秒→30秒→1分→2分→5分） ---------- */
+function poller(run, okMs) {
+  let fails = 0, timer = 0;
+  return function go() {
+    clearTimeout(timer);
+    run(function (ok) { let d; if (ok) { fails = 0; d = okMs; } else { d = CFG.RETRY[Math.min(fails, CFG.RETRY.length - 1)]; fails++; } timer = setTimeout(go, d); });
+  };
+}
+function runSensor(cb) {
+  if (typeof google === 'undefined' || !google.script) { cb(false); return; }
+  let done = false; const to = setTimeout(() => { if (!done) { done = true; cb(false); } }, 30e3);
+  google.script.run
+    .withSuccessHandler(r => { if (done) return; done = true; clearTimeout(to); if (r && r.ts) { SENS = r; renderSensor(); cb(Date.now() - r.ts < 5 * 60e3); } else cb(false); })
+    .withFailureHandler(() => { if (done) return; done = true; clearTimeout(to); cb(false); })
+    .getSensor();
+}
+function fetchWx() {
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + CFG.LAT + '&longitude=' + CFG.LON
+    + '&daily=weather_code,temperature_2m_max,temperature_2m_min&hourly=temperature_2m&timezone=Asia%2FTokyo&forecast_days=2';
+  return fetch(url).then(r => { if (!r.ok) throw new Error('http'); return r.json(); })
+    .catch(() => new Promise((res, rej) => {                       // iframe内でブロックされた場合はGAS経由
+      if (typeof google === 'undefined' || !google.script) return rej(new Error('no gas'));
+      google.script.run.withSuccessHandler(t => { try { res(JSON.parse(t)); } catch (e) { rej(e); } }).withFailureHandler(rej).getWeather();
+    }));
+}
+function runWx(cb) { fetchWx().then(j => { WX = j; WX_AT = Date.now(); cb(renderWx()); }).catch(() => cb(false)); }
+const goSensor = poller(runSensor, CFG.SENSOR_MS), goWx = poller(runWx, CFG.WX_MS);
+
+/* ---------- メインループ（30fps） ---------- */
+let last = 0, frames = 0, fpsT = 0, minute = -1;
+function loop(ts) {
+  requestAnimationFrame(loop);
+  if (ts - last < CFG.FRAME_MS) return;
+  last = ts;
+  if (tr) stepTransition(ts);
+  const n = new Date(Date.now() + 9 * 36e5), s = n.getUTCSeconds();
+  if (s !== lastSec) {                                              // 時・分リングは1秒ごと
+    lastSec = s; drawHM(n.getUTCHours(), n.getUTCMinutes(), s);
+    if (n.getUTCMinutes() !== minute) { minute = n.getUTCMinutes(); if (!tr) checkDate(); renderGraph(); renderSensor(); }
+  } else if (tr) drawHM(n.getUTCHours(), n.getUTCMinutes(), s);    // 遷移中は色が変わるので再描画
+  drawS(s, n.getUTCMilliseconds());
+  if (P.debug) { frames++; if (ts - fpsT >= 1000) { const m = performance.memory ? ' / ' + Math.round(performance.memory.usedJSHeapSize / 1048576) + 'MB' : ''; $('dbg').textContent = frames + 'fps' + m; frames = 0; fpsT = ts; } }
+}
+
+/* ---------- 起動 ---------- */
+apply(cur); renderChips(); layout(); renderSensor(); renderWx();
+window.addEventListener('resize', layout);
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) return;
+  if (checkDate() && !P.date) setTimeout(() => location.reload(), CFG.FADE_MS + 5e3);  // 朝の復帰時に自動リロード（日付が変わっていた場合のみ=1日1回）
+  goSensor(); goWx();
+});
+let di = 0; const DIRS = [[3, 0], [3, 3], [0, 3], [-3, 3], [-3, 0], [-3, -3], [0, -3], [3, -3]];
+setInterval(() => { const d = DIRS[di = (di + 1) & 7]; $('shift').style.transform = 'translate(' + d[0] + 'px,' + d[1] + 'px)'; }, CFG.SHIFT_MS);
+if (P.debug) $('dbg').style.display = 'block';
+goSensor(); goWx(); requestAnimationFrame(loop);
+</script>
+</body>
+</html>

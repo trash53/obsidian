@@ -4,75 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "354451c06473422a",
+        "id": "f25c4df74e00b90c",
         "type": "tabs",
         "children": [
           {
-            "id": "7f05852b629b8add",
+            "id": "99dccb9cceb21d63",
             "type": "leaf",
-            "pinned": true,
             "state": {
-              "type": "graph",
+              "type": "full-calendar-view",
               "state": {},
-              "pinned": true,
-              "icon": "lucide-git-fork",
-              "title": "グラフビュー"
+              "icon": "calendar-glyph",
+              "title": "Calendar"
             }
           },
           {
-            "id": "789d65a05f182cd0",
+            "id": "135966e9c0c26e2a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "file:C:/Users/ryouske/Documents/020_claude/放置系レースゲーム/放置型モータースポーツ一族育成ゲーム（仮） 基本設計書 v2.md",
+                "file": "10_アプリ開発/iphone6s-pwa活用/SETUP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "放置型モータースポーツ一族育成ゲーム（仮） 基本設計書 v2"
-            }
-          },
-          {
-            "id": "337051d84681a387",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "file:C:/Users/ryouske/Documents/020_claude/claude_project_manual_notes.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "claude_project_manual_notes"
-            }
-          },
-          {
-            "id": "21e567c0b5a07388",
-            "type": "leaf",
-            "state": {
-              "type": "planner-release-notes",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "Day Planner Release 0.35.1"
-            }
-          },
-          {
-            "id": "5f476fefac498e32",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "タスク.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "タスク"
+              "title": "SETUP"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -168,6 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "無題のファイル.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -210,6 +171,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "無題のファイル.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -237,13 +199,44 @@
               "icon": "timer",
               "title": "Time Tracker"
             }
+          },
+          {
+            "id": "f64b640e4eccdae5",
+            "type": "leaf",
+            "state": {
+              "type": "agent-client-chat-view",
+              "state": {},
+              "icon": "bot-message-square",
+              "title": "New session"
+            }
+          },
+          {
+            "id": "691421b1e880721a",
+            "type": "leaf",
+            "state": {
+              "type": "SC-custom-variables-view",
+              "state": {},
+              "icon": "code-glyph",
+              "title": "Shell commands: Custom variables"
+            }
+          },
+          {
+            "id": "618154b4911ba30f",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
           }
         ],
         "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -255,47 +248,51 @@
       "command-palette:コマンドパレットを開く": false,
       "bases:新規ベースを作成": false,
       "obsidian-day-planner:Open Timeline": false,
-      "obsidian-day-planner:Open Multi-Day View": false
+      "obsidian-day-planner:Open Multi-Day View": false,
+      "agent-client:Open agent client": false,
+      "obsidian-shellcommands:Shell commands: Custom variables": false,
+      "obsidian-full-calendar:Open Full Calendar": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "fdfdab3b2d2d3c9c",
+  "active": "135966e9c0c26e2a",
   "lastOpenFiles": [
-    "obsidianコンシェルジュ仕様書.md",
-    "未確認 169962.crdownload",
-    "2026-10-22.md",
-    "タスク.md",
-    "file:C:/Users/ryouske/Documents/020_claude/claude_project_manual_notes.md",
-    "無題のフォルダ",
-    "衝動.md",
-    "疾走感.md",
-    "既存ハブ名取得.md",
-    "AI用出力クエリ.md",
-    "202610181747クエリB.md",
-    "202610181747クエリA.md",
-    "file:C:/Users/ryouske/Documents/020_claude/放置系レースゲーム/放置型モータースポーツ一族育成ゲーム（仮） 基本設計書 v2.md",
-    "file:C:/Users/ryouske/Documents/020_claude/放置系レースゲーム/引き継ぎ_セーブデータ設計へ.md",
-    "items/カメレオン_20261018-153208-mt69.md",
-    "items/遊泳-wouca_20261018-154024-yq0o.md",
-    "Tags",
-    "items/We-Are-So-in-love_20261018-084354-squn.md",
-    "items/ルミエールドゥイッセイ_20261018-164929-n122.md",
-    "無題のファイル.base",
-    "items/oddre-revival_20261017-200410-kmzp.md",
-    "無題のファイル.canvas",
-    "items/ジョーマローンオレンジマーマレード_20261018-164414-hcdk.md",
-    "items/maison-matine-あらしのうみ_20261018-164759-p3hn.md",
-    "items/ニコライ-サントノレ_20261018-164607-urcq.md",
-    "items/スターチップフラペチーノ_20261018-154207-dpsg.md",
-    "items/formula-1-theme_20261018-153509-su7x.md",
-    "items/いちご-got-it_20261018-153333-aihc.md",
-    "items/Pure_20261018-152956-tuex.md",
-    "items/一途_20261018-152829-5eh1.md",
-    "items/DIM-LIGHT_20261018-152728-v8ed.md",
-    "items/audio",
-    "items/新しいフォルダー",
-    "items/vtuber/未確認 388589.crdownload",
-    "items/vtuber/未確認 144671.crdownload",
-    "items/vtuber/未確認 841123.crdownload",
-    "items/vtuber"
+    "10_アプリ開発/iphone6s-pwa活用/返答.md",
+    "10_アプリ開発/iphone6s-pwa活用/最初の指摘.md",
+    "10_アプリ開発/iphone6s-pwa活用/SETUP.md",
+    "10_アプリ開発/iphone6s-pwa活用/iphone_6s_landscape_dashboard.html",
+    "10_アプリ開発/iphone6s-pwa活用/iphone6s pwa活用仕様書v2.md",
+    "10_アプリ開発/iphone6s-pwa活用/iphone6s pwa活用仕様書v1.md",
+    "10_アプリ開発/iphone6s-pwa活用",
+    "10_アプリ開発/iphone6s pwa活用/返答.md",
+    "10_アプリ開発/iphone6s pwa活用/最初の指摘.md",
+    "10_アプリ開発/iphone6s pwa活用/SETUP.md",
+    "10_アプリ開発/iphone6s pwa活用/iphone_6s_landscape_dashboard.html",
+    "10_アプリ開発/iphone6s pwa活用/iphone6s pwa活用仕様書v2.md",
+    "10_アプリ開発/iphone6s pwa活用/iphone6s pwa活用仕様書v1.md",
+    "10_アプリ開発/iphone6s pwa活用",
+    "10_アプリ開発/iphone6s pwa活用/未確認 588209.crdownload",
+    "10_アプリ開発/iphone6s pwa活用/未確認 944728.crdownload",
+    "10_アプリ開発/iphone6s pwa活用/アンビエントダッシュボード 引継ぎ資料.md",
+    "30_calendar/events/2026-10-30 test.md",
+    "10_アプリ開発/iphone6s pwa活用/未確認 984157.crdownload",
+    "30_calendar/events/2026-10-30 dd.md",
+    "10_アプリ開発/iphone6s pwa活用/未確認 127765.crdownload",
+    "01_task/02_task.md",
+    "10_アプリ開発/iphone6s pwa活用/未確認 581452.crdownload",
+    "30_calendar/daily note/2026-10-30.md",
+    "30_calendar/daily note/2026-10-30 dd.md",
+    "30_calendar/daily note/2026-10-30 dd.md",
+    "30_calendar/daily note/2026-10-30 dd.md",
+    "30_calendar/events/2026-10-30 2026-10-30.md",
+    "30_calendar/2026-10-30 2026-10-30.md",
+    "30_calendar/events/2026-10-30 pwa検討.md",
+    "30_calendar/2026-10-30 2025-10-30.md",
+    "30_calendar/2026-10-26 休職開始日.md",
+    "30_calendar/2026-10-30 aaa.md",
+    "30_calendar/daily note",
+    "30_calendar/無題のファイル.md",
+    "2026-10-30.md",
+    "無題のファイル.canvas"
   ]
 }

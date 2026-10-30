@@ -1,5 +1,11 @@
 [
   "dataview",
   "property-over-file-name",
-  "obsidian-day-planner"
+  "obsidian-day-planner",
+  "agent-client",
+  "execute-code",
+  "obsidian-shellcommands",
+  "calendar",
+  "obsidian-full-calendar",
+  "obsidian-git"
 ]

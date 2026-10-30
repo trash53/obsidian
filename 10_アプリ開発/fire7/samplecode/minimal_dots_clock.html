@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>Minimal Dots Clock</title>
+    <!-- Web App Manifest for PWA support -->
+    <link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogIk1pbmltYWwgRG90cyBDbG9jayIsCiAgInNob3J0X25hbWUiOiAiQ2xvY2siLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzExMTMxOCIsCiAgInRoZW1lX2NvbG9yIjogIiMxMTEzMTgiCn0=">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #111318;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #e2e8f0;
+        }
+
+        /* Brightness Dimmer Overlay */
+        .brightness-overlay {
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Floating control buttons */
+        .control-btn {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .control-btn:active {
+            transform: scale(0.92);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Precise SVG Rendering */
+        svg {
+            shape-rendering: geometricPrecision;
+            text-rendering: geometricPrecision;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center relative overflow-hidden">
+
+    <!-- Brightness Overlay -->
+    <div id="dimmer" class="brightness-overlay absolute inset-0 bg-black opacity-0 z-30"></div>
+
+    <!-- Top Floating Controls -->
+    <div id="top-bar" class="absolute top-3 right-3 z-40 flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+        <!-- Brightness Toggle Button -->
+        <button id="brightness-btn" class="control-btn p-2.5 rounded-full text-slate-300 hover:text-white" title="明るさ切り替え">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+        </button>
+
+        <!-- Fullscreen Button -->
+        <button id="fullscreen-btn" class="control-btn p-2.5 rounded-full text-slate-300 hover:text-white" title="全画面表示">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Main Container: Strict height containment for 600px screens -->
+    <div class="w-full h-full flex flex-col items-center justify-center p-2 relative z-10">
+        
+        <!-- Clock SVG Container: Sized dynamically to never exceed 440px height -->
+        <div class="relative flex items-center justify-center w-[360px] h-[360px] max-h-[70vh] aspect-square">
+            <svg id="clock-svg" class="w-full h-full transform -rotate-90 overflow-visible" viewBox="0 0 400 400">
+                
+                <!-- Background Outer Dial Accent Ring -->
+                <circle cx="200" cy="200" r="175" fill="none" stroke="#1a1d24" stroke-width="1.5" />
+
+                <!-- Hour Dots Group -->
+                <g id="dots-group"></g>
+
+                <!-- Minute Track Dots Group -->
+                <g id="minute-dots-group"></g>
+
+                <!-- Hour Hand -->
+                <line id="hour-hand" x1="200" y1="200" x2="275" y2="200" 
+                      stroke="#f8fafc" stroke-width="4.5" stroke-linecap="round" />
+
+                <!-- Minute Hand -->
+                <line id="minute-hand" x1="200" y1="200" x2="325" y2="200" 
+                      stroke="#cbd5e1" stroke-width="2.5" stroke-linecap="round" />
+
+                <!-- Second Hand -->
+                <line id="second-hand" x1="165" y1="200" x2="340" y2="200" 
+                      stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round" />
+
+                <!-- Center Cap -->
+                <circle cx="200" cy="200" r="4.5" fill="#111318" stroke="#38bdf8" stroke-width="2" />
+            </svg>
+        </div>
+
+        <!-- Digital Date & Time Display -->
+        <div class="mt-2 flex flex-col items-center justify-center text-center">
+            <div id="date-text" class="text-xs font-medium tracking-[0.25em] text-slate-400 uppercase">
+                2026.10.29 THU
+            </div>
+            <div id="time-text-digital" class="text-[11px] tracking-[0.18em] text-slate-500 mt-0.5 font-mono">
+                15:11:00
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="absolute bottom-4 bg-slate-800/90 text-slate-300 text-xs px-4 py-2 rounded-full border border-slate-700 opacity-0 transition-opacity duration-300 pointer-events-none z-50">
+        タップで全画面切り替え
+    </div>
+
+    <script>
+        // --- Setup Clock Face Dots ---
+        const dotsGroup = document.getElementById('dots-group');
+        const minuteDotsGroup = document.getElementById('minute-dots-group');
+        const hourHand = document.getElementById('hour-hand');
+        const minuteHand = document.getElementById('minute-hand');
+        const secondHand = document.getElementById('second-hand');
+        const dateText = document.getElementById('date-text');
+        const timeTextDigital = document.getElementById('time-text-digital');
+        const dimmer = document.getElementById('dimmer');
+        const toast = document.getElementById('toast');
+
+        const radius = 160; 
+        const centerX = 200;
+        const centerY = 200;
+
+        // Render Minute Track (60 dots)
+        for (let i = 0; i < 60; i++) {
+            if (i % 5 !== 0) {
+                const angle = (i * 6) * (Math.PI / 180);
+                const x = centerX + radius * Math.cos(angle);
+                const y = centerY + radius * Math.sin(angle);
+
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', x);
+                circle.setAttribute('cy', y);
+                circle.setAttribute('r', '1.2');
+                circle.setAttribute('fill', '#262a35');
+                minuteDotsGroup.appendChild(circle);
+            }
+        }
+
+        // Render Hour Main Dots (12 positions)
+        for (let i = 0; i < 12; i++) {
+            const angle = (i * 30) * (Math.PI / 180);
+            const x = centerX + radius * Math.cos(angle);
+            const y = centerY + radius * Math.sin(angle);
+
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', x);
+            circle.setAttribute('cy', y);
+
+            if (i % 3 === 0) {
+                circle.setAttribute('r', '4.5');
+                circle.setAttribute('fill', i === 0 ? '#38bdf8' : '#f1f5f9');
+            } else {
+                circle.setAttribute('r', '2.8');
+                circle.setAttribute('fill', '#64748b');
+            }
+
+            dotsGroup.appendChild(circle);
+        }
+
+        // --- Smooth Animation Loop ---
+        const DAYS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+
+        function updateClock() {
+            const now = new Date();
+            const ms = now.getMilliseconds();
+            const seconds = now.getSeconds() + ms / 1000;
+            const minutes = now.getMinutes() + seconds / 60;
+            const hours = (now.getHours() % 12) + minutes / 60;
+
+            const hourDeg = hours * 30;
+            const minuteDeg = minutes * 6;
+            const secondDeg = seconds * 6;
+
+            hourHand.setAttribute('transform', `rotate(${hourDeg}, ${centerX}, ${centerY})`);
+            minuteHand.setAttribute('transform', `rotate(${minuteDeg}, ${centerX}, ${centerY})`);
+            secondHand.setAttribute('transform', `rotate(${secondDeg}, ${centerX}, ${centerY})`);
+
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const date = String(now.getDate()).padStart(2, '0');
+            const dayStr = DAYS[now.getDay()];
+
+            dateText.textContent = `${year}.${month}.${date} ${dayStr}`;
+
+            const hStr = String(now.getHours()).padStart(2, '0');
+            const mStr = String(now.getMinutes()).padStart(2, '0');
+            const sStr = String(Math.floor(seconds)).padStart(2, '0');
+            timeTextDigital.textContent = `${hStr}:${mStr}:${sStr}`;
+
+            requestAnimationFrame(updateClock);
+        }
+
+        requestAnimationFrame(updateClock);
+
+        // --- Controls Logic ---
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Fullscreen error: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        fullscreenBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleFullscreen();
+        });
+
+        document.body.addEventListener('click', (e) => {
+            if (e.target.closest('#top-bar')) return;
+            toggleFullscreen();
+        });
+
+        // Brightness Steps
+        const brightnessBtn = document.getElementById('brightness-btn');
+        const dimLevels = [0, 0.45, 0.78];
+        let currentDimIndex = 0;
+
+        brightnessBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentDimIndex = (currentDimIndex + 1) % dimLevels.length;
+            dimmer.style.opacity = dimLevels[currentDimIndex];
+            showToast(`明るさ: ${100 - Math.round(dimLevels[currentDimIndex] * 100)}%`);
+        });
+
+        let toastTimeout;
+        function showToast(message) {
+            toast.textContent = message;
+            toast.style.opacity = '1';
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 2000);
+        }
+
+        setTimeout(() => {
+            showToast('画面タップで全画面切替');
+        }, 1000);
+    </script>
+</body>
+</html>

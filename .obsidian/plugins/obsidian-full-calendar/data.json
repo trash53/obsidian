@@ -1,0 +1,21 @@
+{
+  "calendarSources": [
+    {
+      "type": "local",
+      "color": "#5fe0e3",
+      "directory": "30_calendar/events"
+    },
+    {
+      "type": "local",
+      "color": "#7bec4b",
+      "directory": "30_calendar/daily note"
+    }
+  ],
+  "defaultCalendar": 0,
+  "firstDay": 0,
+  "initialView": {
+    "desktop": "dayGridMonth",
+    "mobile": "timeGrid3Days"
+  },
+  "timeFormat24h": false
+}
