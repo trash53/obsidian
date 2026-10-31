@@ -37,12 +37,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10_アプリ開発/pwa-obsidian-front/回答.md",
+                "file": "10_アプリ開発/pwa-obsidian-front/Obsidian Hub 引き継ぎ資料.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "回答"
+              "title": "Obsidian Hub 引き継ぎ資料"
             }
           },
           {
@@ -334,12 +334,16 @@
   },
   "active": "924720406bc8cfda",
   "lastOpenFiles": [
-    "10_アプリ開発/pwa-obsidian-front/obsidian_front_end_hub.md",
+    "10_アプリ開発/pwa-obsidian-front/Obsidian Hub システム仕様書 v2.md",
+    "30_calendar/daily-note/2026-10-31.md",
     "10_アプリ開発/pwa-obsidian-front/回答.md",
+    "10_アプリ開発/pwa-obsidian-front/Obsidian Hub 引き継ぎ資料.md",
+    "10_アプリ開発/pwa-obsidian-front/未確認 349384.crdownload",
+    "10_アプリ開発/pwa-obsidian-front/未確認 260880.crdownload",
+    "10_アプリ開発/pwa-obsidian-front/obsidian_front_end_hub.md",
     "10_アプリ開発/pwa-obsidian-front/仕様書最初の指摘.md",
     "10_アプリ開発/iphone6s-pwa活用/返答.md",
     "10_アプリ開発/iphone6s-pwa活用/最初の指摘.md",
-    "30_calendar/daily-note/2026-10-31.md",
     "30_calendar/events/2026-10-30 test.md",
     "10_アプリ開発/iphone6s-pwa活用/s,art_home_dashboard_specifications_v2.md",
     "10_アプリ開発/iphone6s-pwa活用/settings.pdf",
@@ -364,12 +368,8 @@
     "30_calendar/events/2026-10-31 ホームダッシュボード完成.md",
     "30_calendar/events/2026-11-06 停電.md",
     "30_calendar/events/2026-10-31 test.md",
-    "30_calendar/events/2026-10-30 dd.md",
-    "返答.md",
     "iphone_6s_landscape_dashboard.html",
     "10_アプリ開発/iphone6s-pwa活用/iphone_6s_landscape_dashboard.html",
-    "10_アプリ開発/iphone6s-pwa活用",
-    "10_アプリ開発/iphone6s pwa活用/iphone_6s_landscape_dashboard.html",
     "無題のファイル.canvas"
   ]
 }
