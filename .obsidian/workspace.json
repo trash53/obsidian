@@ -88,7 +88,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -320,8 +320,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9f765ea0bcecbc41",
+  "active": "93ac0fab549c80d1",
   "lastOpenFiles": [
+    "30_calendar/events/2026-11-01 tsts.md",
+    "30_calendar/events/2026-11-01 testt.md",
+    "30_calendar/events/2026-10-31 test4.md",
+    "30_calendar/events/2026-10-31 test3.md",
+    "30_calendar/events/2026-10-31 test2.md",
+    "10_アプリ開発/iphone6s-pwa活用/settings.pdf",
+    "30_calendar/daily note/iphoneからのテスト",
     "10_アプリ開発/iphone6s-pwa活用/SETUP.md",
     "10_アプリ開発/iphone6s-pwa活用/s,art_home_dashboard_specifications_v2.md",
     "10_アプリ開発/冷蔵庫在庫管理システムnote.md",
@@ -350,14 +357,7 @@
     "10_アプリ開発/iphone6s pwa活用",
     "10_アプリ開発/iphone6s pwa活用/未確認 588209.crdownload",
     "10_アプリ開発/iphone6s pwa活用/未確認 944728.crdownload",
-    "10_アプリ開発/iphone6s pwa活用/アンビエントダッシュボード 引継ぎ資料.md",
-    "30_calendar/events/2026-10-30 test.md",
     "10_アプリ開発/iphone6s pwa活用/未確認 984157.crdownload",
-    "10_アプリ開発/iphone6s pwa活用/未確認 127765.crdownload",
-    "01_task/02_task.md",
-    "10_アプリ開発/iphone6s pwa活用/未確認 581452.crdownload",
-    "30_calendar/daily note/2026-10-30.md",
-    "30_calendar/daily note/2026-10-30 dd.md",
     "無題のファイル.canvas"
   ]
 }
