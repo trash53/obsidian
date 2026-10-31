@@ -16,8 +16,23 @@
               "icon": "calendar-glyph",
               "title": "Calendar"
             }
+          },
+          {
+            "id": "84af3894ea55b2ee",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30_calendar/daily-note/2026-10-31.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-10-31"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -249,7 +264,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f64b640e4eccdae5",
+  "active": "84af3894ea55b2ee",
   "lastOpenFiles": [
     "file:C:/Users/ryouske/Documents/020_claude/obsidian-fronthub/README.md",
     "10_アプリ開発/iphone6s-pwa活用/SETUP.md",
