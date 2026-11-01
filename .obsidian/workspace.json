@@ -51,12 +51,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "30_calendar/daily-note/2026-11-01.md",
+                "file": "file:C:/Users/ryouske/Documents/020_claude/obsidian-hub/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-11-01"
+              "title": "README"
             }
           }
         ],
@@ -269,7 +269,7 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 10
       }
     ],
     "direction": "horizontal",
@@ -294,8 +294,8 @@
   },
   "active": "180d770765b958b6",
   "lastOpenFiles": [
-    "30_calendar/daily-note/2026-10-30.md",
     "30_calendar/daily-note/2026-11-01.md",
+    "30_calendar/daily-note/2026-10-30.md",
     "30_calendar/daily-note/2026-10-31.md",
     "30_calendar/events/2026-10-30 test.md",
     "file:C:/Users/ryouske/Documents/020_claude/obsidian-fronthub/README.md",
