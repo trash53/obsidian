@@ -6,9 +6,9 @@
       "directory": "30_calendar/events"
     },
     {
-      "type": "local",
-      "color": "#7bec4b",
-      "directory": "30_calendar/daily note"
+      "type": "dailynote",
+      "color": "#4be255",
+      "heading": "daily-note"
     }
   ],
   "defaultCalendar": 0,
