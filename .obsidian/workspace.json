@@ -65,12 +65,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10_app-develop/dilynote-report/docs/obsidian.md",
+                "file": "30_calendar/daily-note/2026-10-30.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "obsidian"
+              "title": "2026-10-30"
             }
           },
           {
@@ -79,12 +79,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10_app-develop/dilynote-report/docs/最初の指摘への回答.md",
+                "file": "30_calendar/daily-note/2026-11-02.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "最初の指摘への回答"
+              "title": "2026-11-02"
             }
           }
         ],
@@ -323,6 +323,16 @@
   },
   "active": "d03843c6435d501d",
   "lastOpenFiles": [
+    "10_app-develop/dailynote-report/1_weekly/2026-W44.md",
+    "30_calendar/daily-note/2026-11-02.md",
+    "file:C:/Users/ryouske/Documents/30_projects/1_obsidian-report/README.md",
+    "10_app-develop/dailynote-report/2_monthly/2026-10.md",
+    "10_app-develop/dailynote-report/2_monthly",
+    "file:C:/Users/ryouske/Documents/30_projects/1_obsidian-report/prompt_context.md",
+    "10_app-develop/dailynote-report/1_weekly",
+    "10_app-develop/dailynote-report",
+    "30_calendar/daily-note/2026-11-01.md",
+    "30_calendar/daily-note/2026-10-30.md",
     "10_app-develop/dilynote-report/docs/obsidian.md",
     "10_app-develop/dilynote-report/docs/最初の指摘への回答.md",
     "10_app-develop/dilynote-report/docs/最初の指摘.md",
@@ -332,15 +342,12 @@
     "10_app-develop/dilynote-report/1_weekly",
     "10_app-develop/dilynote-report/docs",
     "10_app-develop/iphone6s-pwa活用/最初の指摘.md",
-    "30_calendar/daily-note/2026-11-01.md",
     "30_calendar/events/2026-11-01 ホームダッシュボード残項目処理.md",
     "30_calendar/daily-note/2026-10-31.md",
     "30_calendar/events/2026-11-02 ディスプレイの箱捨てる.md",
     "10_アプリ開発/週報作成/未確認 225305.crdownload",
     "10_app-develop/dilynote-report",
-    "10_アプリ開発/新しいフォルダー",
     "10_app-develop/pwa-obsidian-front/Obsidian Hub システム仕様書 v3（最終版）.md",
-    "10_アプリ開発/pwa-obsidian-front/未確認 911883.crdownload",
     "30_calendar/events/2026-11-02_地域のゴミ出しルールを確認し、段ボールを処分する。.md",
     "20_valorant/valorant_handoff_v1.md",
     "30_calendar/events/2026-11-02_てすと.md",
@@ -351,13 +358,7 @@
     "30_calendar/events/2026-11-01 コーヒーとタバコ買う.md",
     "30_calendar/events/2026-10-31 ホームダッシュボード完成.md",
     "30_calendar/events/2026-10-30 test.md",
-    "30_calendar/daily-note/2026-10-30.md",
     "file:C:/Users/ryouske/Documents/020_claude/obsidian-hub/README.md",
-    "file:C:/Users/ryouske/Documents/020_claude/obsidian-fronthub/README.md",
-    "10_app-develop/iphone6s-pwa活用/SETUP.md",
-    "10_app-develop/pwa-obsidian-front/obsidian_front_end_hub.md",
-    "10_app-develop/iphone6s-pwa活用/s,art_home_dashboard_specifications_v2.md",
-    "10_アプリ開発/pwa-obsidian-front/未確認 349384.crdownload",
     "無題のファイル.canvas"
   ]
 }
