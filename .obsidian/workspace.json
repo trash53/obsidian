@@ -36,20 +36,6 @@
             }
           },
           {
-            "id": "8a4c57cb0dd052a5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "20_valorant/valorant_handoff_v1.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "valorant_handoff_v1"
-            }
-          },
-          {
             "id": "dfe29a04319f8ce5",
             "type": "leaf",
             "state": {
@@ -79,16 +65,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "30_calendar/events/2026-11-01 ホームダッシュボード残項目処理.md",
+                "file": "10_app-develop/dilynote-report/docs/obsidian.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-11-01 ホームダッシュボード残項目処理"
+              "title": "obsidian"
+            }
+          },
+          {
+            "id": "d03843c6435d501d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10_app-develop/dilynote-report/docs/最初の指摘への回答.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "最初の指摘への回答"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -301,7 +301,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -320,17 +321,26 @@
       "obsidian-full-calendar:Open Full Calendar": false
     }
   },
-  "active": "dfe29a04319f8ce5",
+  "active": "d03843c6435d501d",
   "lastOpenFiles": [
-    "30_calendar/events/2026-11-02 ディスプレイの箱捨てる.md",
-    "10_アプリ開発/週報作成/obsidian.md",
-    "10_アプリ開発/週報作成/未確認 225305.crdownload",
-    "10_アプリ開発/週報作成",
-    "10_アプリ開発/新しいフォルダー",
-    "10_アプリ開発/pwa-obsidian-front/Obsidian Hub システム仕様書 v3（最終版）.md",
-    "10_アプリ開発/pwa-obsidian-front/未確認 911883.crdownload",
-    "30_calendar/events/2026-11-01 ホームダッシュボード残項目処理.md",
+    "10_app-develop/dilynote-report/docs/obsidian.md",
+    "10_app-develop/dilynote-report/docs/最初の指摘への回答.md",
+    "10_app-develop/dilynote-report/docs/最初の指摘.md",
+    "10_app-develop/dilynote-report/4_yearly",
+    "10_app-develop/dilynote-report/3_quarterly",
+    "10_app-develop/dilynote-report/2_monthly",
+    "10_app-develop/dilynote-report/1_weekly",
+    "10_app-develop/dilynote-report/docs",
+    "10_app-develop/iphone6s-pwa活用/最初の指摘.md",
     "30_calendar/daily-note/2026-11-01.md",
+    "30_calendar/events/2026-11-01 ホームダッシュボード残項目処理.md",
+    "30_calendar/daily-note/2026-10-31.md",
+    "30_calendar/events/2026-11-02 ディスプレイの箱捨てる.md",
+    "10_アプリ開発/週報作成/未確認 225305.crdownload",
+    "10_app-develop/dilynote-report",
+    "10_アプリ開発/新しいフォルダー",
+    "10_app-develop/pwa-obsidian-front/Obsidian Hub システム仕様書 v3（最終版）.md",
+    "10_アプリ開発/pwa-obsidian-front/未確認 911883.crdownload",
     "30_calendar/events/2026-11-02_地域のゴミ出しルールを確認し、段ボールを処分する。.md",
     "20_valorant/valorant_handoff_v1.md",
     "30_calendar/events/2026-11-02_てすと.md",
@@ -342,22 +352,12 @@
     "30_calendar/events/2026-10-31 ホームダッシュボード完成.md",
     "30_calendar/events/2026-10-30 test.md",
     "30_calendar/daily-note/2026-10-30.md",
-    "30_calendar/daily-note/2026-10-31.md",
     "file:C:/Users/ryouske/Documents/020_claude/obsidian-hub/README.md",
     "file:C:/Users/ryouske/Documents/020_claude/obsidian-fronthub/README.md",
-    "10_アプリ開発/iphone6s-pwa活用/SETUP.md",
-    "10_アプリ開発/pwa-obsidian-front/obsidian_front_end_hub.md",
-    "10_アプリ開発/iphone6s-pwa活用/s,art_home_dashboard_specifications_v2.md",
-    "file:C:/Users/ryouske/Documents/020_claude/obsidian-fronthub/files/README.md",
-    "10_アプリ開発/pwa-obsidian-front/Obsidian Hub 引き継ぎ資料.md",
-    "10_アプリ開発/pwa-obsidian-front/仕様書最初の指摘.md",
-    "10_アプリ開発/pwa-obsidian-front/Obsidian Hub システム仕様書 v2.md",
+    "10_app-develop/iphone6s-pwa活用/SETUP.md",
+    "10_app-develop/pwa-obsidian-front/obsidian_front_end_hub.md",
+    "10_app-develop/iphone6s-pwa活用/s,art_home_dashboard_specifications_v2.md",
     "10_アプリ開発/pwa-obsidian-front/未確認 349384.crdownload",
-    "10_アプリ開発/pwa-obsidian-front/未確認 260880.crdownload",
-    "10_アプリ開発/iphone6s-pwa活用/settings.pdf",
-    "10_アプリ開発/pwa-obsidian-front/gemini-code-1793432918226.html",
-    "10_アプリ開発/pwa-obsidian-front/未確認 635816.crdownload",
-    "10_アプリ開発/pwa-obsidian-front/未確認 952254.crdownload",
     "無題のファイル.canvas"
   ]
 }
