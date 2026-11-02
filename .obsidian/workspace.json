@@ -37,12 +37,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_lims-table/nurojunk_vsinger_fan_site_requirements_architecture_specification.md",
+                "file": "04_my-portfolio/ポートフォリオサイト 要件・設計仕様書（改訂版）.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "nurojunk_vsinger_fan_site_requirements_architecture_specification"
+              "title": "ポートフォリオサイト 要件・設計仕様書（改訂版）"
             }
           }
         ],
@@ -318,10 +318,12 @@
       }
     ]
   },
-  "active": "09e34bfc237b502e",
+  "active": "c12c2580fdd89f3e",
   "lastOpenFiles": [
+    "05_lims-table/limbs_table_specification_v2.md",
     "05_lims-table/nurojunk_vsinger_fan_site_requirements_architecture_specification.md",
     "05_lims-table/指摘への回答.md",
+    "05_lims-table/未確認 893232.crdownload",
     "30_calendar/daily-note/2026-11-02.md",
     "05_lims-table/最初の指摘.md",
     "04_my-portfolio/ポートフォリオサイト 要件・設計仕様書（改訂版）.md",
@@ -346,7 +348,6 @@
     "10_app-develop/dailynote-report/2_monthly",
     "file:C:/Users/ryouske/Documents/30_projects/1_obsidian-report/prompt_context.md",
     "10_app-develop/dailynote-report/1_weekly",
-    "10_app-develop/dailynote-report",
     "10_app-develop/dilynote-report/docs/obsidian.md",
     "10_app-develop/dilynote-report/docs/最初の指摘への回答.md",
     "10_app-develop/dilynote-report/docs/最初の指摘.md",
@@ -356,7 +357,6 @@
     "10_app-develop/pwa-obsidian-front/Obsidian Hub システム仕様書 v3（最終版）.md",
     "30_calendar/events/2026-11-02_地域のゴミ出しルールを確認し、段ボールを処分する。.md",
     "20_valorant/valorant_handoff_v1.md",
-    "30_calendar/events/2026-11-02_てすと.md",
     "無題のファイル.canvas"
   ]
 }
