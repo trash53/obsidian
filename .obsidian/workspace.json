@@ -45,8 +45,7 @@
               "title": "ポートフォリオサイト 要件・設計仕様書（改訂版）"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -318,15 +317,17 @@
       }
     ]
   },
-  "active": "c12c2580fdd89f3e",
+  "active": "09e34bfc237b502e",
   "lastOpenFiles": [
+    "04_my-portfolio/ポートフォリオサイト 要件・設計仕様書（改訂版）.md",
+    "30_calendar/events/2026-11-27 燃やせないゴミ.md",
+    "30_calendar/events/2026-11-18 発泡スチロール捨てる.md",
     "05_lims-table/limbs_table_specification_v2.md",
     "05_lims-table/nurojunk_vsinger_fan_site_requirements_architecture_specification.md",
     "05_lims-table/指摘への回答.md",
     "05_lims-table/未確認 893232.crdownload",
     "30_calendar/daily-note/2026-11-02.md",
     "05_lims-table/最初の指摘.md",
-    "04_my-portfolio/ポートフォリオサイト 要件・設計仕様書（改訂版）.md",
     "05_lims-table/未確認 767471.crdownload",
     "05_lims-table",
     "新しいフォルダー",
@@ -355,8 +356,6 @@
     "30_calendar/events/2026-11-01 ホームダッシュボード残項目処理.md",
     "30_calendar/events/2026-11-02 ディスプレイの箱捨てる.md",
     "10_app-develop/pwa-obsidian-front/Obsidian Hub システム仕様書 v3（最終版）.md",
-    "30_calendar/events/2026-11-02_地域のゴミ出しルールを確認し、段ボールを処分する。.md",
-    "20_valorant/valorant_handoff_v1.md",
     "無題のファイル.canvas"
   ]
 }
