@@ -51,12 +51,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_my-portfolio/ポートフォリオサイト 引継ぎ資料（第2版）.md",
+                "file": "04_my-portfolio/ポートフォリオサイト 引継ぎ資料（第3版）.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ポートフォリオサイト 引継ぎ資料（第2版）"
+              "title": "ポートフォリオサイト 引継ぎ資料（第3版）"
             }
           }
         ],
@@ -295,8 +295,10 @@
   },
   "active": "1ecd65357d91efb2",
   "lastOpenFiles": [
-    "30_calendar/daily-note/2026-11-02.md",
     "04_my-portfolio/ポートフォリオサイト 引継ぎ資料（第2版）.md",
+    "04_my-portfolio/ポートフォリオサイト 引継ぎ資料（第3版）.md",
+    "04_my-portfolio/未確認 505851.crdownload",
+    "30_calendar/daily-note/2026-11-02.md",
     "04_my-portfolio/ポートフォリオサイト 要件・設計仕様書（改訂版）.md",
     "05_lims-table/指摘への回答.md",
     "04_my-portfolio/未確認 240021.crdownload",
@@ -324,14 +326,12 @@
     "10_app-develop/dailynote-report/1_weekly/2026-W44.md",
     "file:C:/Users/ryouske/Documents/30_projects/1_obsidian-report/README.md",
     "10_app-develop/dailynote-report/2_monthly/2026-10.md",
-    "10_app-develop/dailynote-report/2_monthly",
     "file:C:/Users/ryouske/Documents/30_projects/1_obsidian-report/prompt_context.md",
     "10_app-develop/dilynote-report/docs/obsidian.md",
     "10_app-develop/dilynote-report/docs/最初の指摘への回答.md",
     "10_app-develop/dilynote-report/docs/最初の指摘.md",
     "10_app-develop/iphone6s-pwa活用/最初の指摘.md",
     "30_calendar/events/2026-11-01 ホームダッシュボード残項目処理.md",
-    "30_calendar/events/2026-11-02 ディスプレイの箱捨てる.md",
     "無題のファイル.canvas"
   ]
 }
