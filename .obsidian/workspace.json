@@ -59,8 +59,7 @@
               "title": "2026-11-02"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -293,11 +292,11 @@
       "obsidian-full-calendar:Open Full Calendar": false
     }
   },
-  "active": "dfe29a04319f8ce5",
+  "active": "84af3894ea55b2ee",
   "lastOpenFiles": [
+    "30_calendar/daily-note/2026-11-02.md",
     "30_calendar/daily-note/2026-10-30.md",
     "30_calendar/daily-note/2026-11-01.md",
-    "30_calendar/daily-note/2026-11-02.md",
     "10_app-develop/dailynote-report/1_weekly/2026-W44.md",
     "file:C:/Users/ryouske/Documents/30_projects/1_obsidian-report/README.md",
     "10_app-develop/dailynote-report/2_monthly/2026-10.md",
