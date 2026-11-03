@@ -10,9 +10,11 @@
           {
             "id": "dfe29a04319f8ce5",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "full-calendar-view",
               "state": {},
+              "pinned": true,
               "icon": "calendar-glyph",
               "title": "Calendar"
             }
@@ -23,100 +25,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "30_calendar/daily-note/2026-11-02.md",
+                "file": "05_lims-table/handoff_limbs_table.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-11-02"
-            }
-          },
-          {
-            "id": "c12c2580fdd89f3e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "04_my-portfolio/ポートフォリオサイト 要件・設計仕様書（改訂版）.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "ポートフォリオサイト 要件・設計仕様書（改訂版）"
-            }
-          },
-          {
-            "id": "1ecd65357d91efb2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "05_lims-table/limbs_table_specification_v2.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "limbs_table_specification_v2"
-            }
-          },
-          {
-            "id": "5dd5cde9f79374d8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/README.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "README"
-            }
-          },
-          {
-            "id": "af9a5592d3757387",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "05_lims-table/limbs_table_specification_v2.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "limbs_table_specification_v2"
-            }
-          },
-          {
-            "id": "61808cd09b8c10d6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/README.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "README"
-            }
-          },
-          {
-            "id": "5481f9427c3bf3d2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/README.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "README"
+              "title": "handoff_limbs_table"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -349,13 +267,16 @@
       "obsidian-full-calendar:Open Full Calendar": false
     }
   },
-  "active": "af9a5592d3757387",
+  "active": "d03843c6435d501d",
   "lastOpenFiles": [
-    "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/old/limbs-table/README.md",
+    "30_calendar/daily-note/2026-11-03.md",
     "05_lims-table/handoff_limbs_table.md",
-    "05_lims-table/未確認 322467.crdownload",
-    "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/README.md",
+    "30_calendar/daily-note/2026-11-02.md",
     "05_lims-table/limbs_table_specification_v2.md",
+    "04_my-portfolio/ポートフォリオサイト 要件・設計仕様書（改訂版）.md",
+    "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/README.md",
+    "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/old/limbs-table/README.md",
+    "05_lims-table/未確認 322467.crdownload",
     "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/limbs-table/README.md",
     "04_my-portfolio/IMG_1081.png",
     "04_my-portfolio/ポートフォリオサイト 引継ぎ資料（第4版）.md",
@@ -364,8 +285,6 @@
     "04_my-portfolio/未確認 186488.crdownload",
     "04_my-portfolio/ポートフォリオサイト 引継ぎ資料（第2版）.md",
     "04_my-portfolio/未確認 505851.crdownload",
-    "30_calendar/daily-note/2026-11-02.md",
-    "04_my-portfolio/ポートフォリオサイト 要件・設計仕様書（改訂版）.md",
     "05_lims-table/指摘への回答.md",
     "04_my-portfolio/未確認 240021.crdownload",
     "30_calendar/events/2026-11-27 燃やせないゴミ.md",
@@ -387,7 +306,6 @@
     "10_app-develop/dailynote-report/1_weekly/2026-W44.md",
     "file:C:/Users/ryouske/Documents/30_projects/1_obsidian-report/README.md",
     "10_app-develop/dailynote-report/2_monthly/2026-10.md",
-    "file:C:/Users/ryouske/Documents/30_projects/1_obsidian-report/prompt_context.md",
     "無題のファイル.canvas"
   ]
 }
