@@ -79,12 +79,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/old/limbs-table/README.md",
+                "file": "05_lims-table/limbs_table_specification_v2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "limbs_table_specification_v2"
             }
           },
           {
@@ -351,6 +351,7 @@
   },
   "active": "af9a5592d3757387",
   "lastOpenFiles": [
+    "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/old/limbs-table/README.md",
     "05_lims-table/handoff_limbs_table.md",
     "05_lims-table/未確認 322467.crdownload",
     "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/README.md",
@@ -387,7 +388,6 @@
     "file:C:/Users/ryouske/Documents/30_projects/1_obsidian-report/README.md",
     "10_app-develop/dailynote-report/2_monthly/2026-10.md",
     "file:C:/Users/ryouske/Documents/30_projects/1_obsidian-report/prompt_context.md",
-    "10_app-develop/dilynote-report/docs/obsidian.md",
     "無題のファイル.canvas"
   ]
 }
