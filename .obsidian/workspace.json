@@ -25,30 +25,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05_lims-table/最初の指摘.md",
+                "file": "05_lims-table/フェーズ5完了時点で運用してみて気づいたこと.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "最初の指摘"
-            }
-          },
-          {
-            "id": "9c470fe8370aac1d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/docs/ADMIN.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "ADMIN"
+              "title": "フェーズ5完了時点で運用してみて気づいたこと"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -281,13 +267,55 @@
       "obsidian-full-calendar:Open Full Calendar": false
     }
   },
-  "active": "9c470fe8370aac1d",
+  "floating": {
+    "id": "94398cfdf3a35852",
+    "type": "floating",
+    "children": [
+      {
+        "id": "b4a3e80b01373166",
+        "type": "window",
+        "children": [
+          {
+            "id": "f3e8ebb2ea524a80",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "9c470fe8370aac1d",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "05_lims-table/handoff_limbs_table_phase5.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "handoff_limbs_table_phase5"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": -1057,
+        "y": -556,
+        "width": 1051,
+        "height": 1491,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "d03843c6435d501d",
   "lastOpenFiles": [
+    "05_lims-table/handoff_limbs_table_phase5.md",
+    "05_lims-table/limbs_table_specification_v2.md",
+    "05_lims-table/フェーズ5完了時点で運用してみて気づいたこと.md",
+    "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/docs/ADMIN.md",
     "05_lims-table/nurojunk_vsinger_fan_site_requirements_architecture_specification.md",
     "05_lims-table/handoff_limbs_table.md",
     "30_calendar/daily-note/2026-11-03.md",
     "30_calendar/daily-note/2026-11-02.md",
-    "05_lims-table/limbs_table_specification_v2.md",
     "04_my-portfolio/ポートフォリオサイト 要件・設計仕様書（改訂版）.md",
     "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/README.md",
     "file:C:/Users/ryouske/Documents/30_projects/3_limbs-table/old/limbs-table/README.md",
@@ -317,9 +345,6 @@
     "04_my-portfolio/code_artifact.md",
     "30_calendar/daily-note/2026-10-30.md",
     "30_calendar/daily-note/2026-11-01.md",
-    "10_app-develop/dailynote-report/1_weekly/2026-W44.md",
-    "file:C:/Users/ryouske/Documents/30_projects/1_obsidian-report/README.md",
-    "10_app-develop/dailynote-report/2_monthly/2026-10.md",
     "無題のファイル.canvas"
   ]
 }
